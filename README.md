@@ -36,7 +36,7 @@ The application should now be available under http://localhost:3000
 
 ### Use your own images
 
-You want to use your own images? Just add as them as jpeg files to celebritydata/images, delete all files in celebritydata/embeddings.
+You want to use your own images? Just add as them as jpeg files to celebritydata/images.
 To create new embeddings run
 ```
 docker-compose -f build-embeddings.yml up
