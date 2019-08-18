@@ -26,6 +26,7 @@ cd famousfaces
 
 #### build and start containers
 ```
+docker-compose build
 docker-compose up
 ```
 
