@@ -4,10 +4,6 @@ This repo contains the source and data of https://famousfaces.nukapi.com, an ope
 You take a picture of yourself and it presents you the most similar celebrities of a given set. 
 You can easily add/reove faces and integrate the used react webapp into your own.
 
-### Limitations:
-
-The tensorflow version is fixed to 1.2 . Feel free to update and create a pull request! Thanks in Advance for your help!
-
 ### Getting started:
 
 #### Install docker (skip if already installed)
@@ -31,4 +27,8 @@ docker-compose build
 docker-compose up
 ```
 
-The application should now be available under http://localhost:3000
+**The application should now be available under http://localhost:3000**
+
+### Limitations:
+
+The tensorflow version is fixed to 1.2 . Feel free to update and create a pull request! Thanks in Advance for your help!
