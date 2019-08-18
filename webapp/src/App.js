@@ -82,7 +82,6 @@ class App extends Component {
         ReactGA.initialize('UA-98816967-1');
         ReactGA.pageview(window.location.pathname + window.location.search);
         var images = [];
-        var contactmessage = undefined
         var key_idx = 0;
         if (this.state.nearest_celebrities) {
             for (var current_celeb in this.state.nearest_celebrities) {
@@ -93,11 +92,6 @@ class App extends Component {
                 }
 
             }
-            contactmessage = <div>
-                <h3>Do you want to use famousfaces on your site? This App is for sale, complete source code +
-                    help with hosting and adaption if needed
-                    Contact us by mail: famousfaces@nukapi.com </h3>
-            </div>
         }
         var main =  <div>
             <Webcam
@@ -149,9 +143,6 @@ class App extends Component {
                     {error_msg}
                     {main}
                     {loader}
-                </Grid.Row>
-                <Grid.Row>
-                    {contactmessage}
                 </Grid.Row>
                 <Grid.Row>
                     {images}
