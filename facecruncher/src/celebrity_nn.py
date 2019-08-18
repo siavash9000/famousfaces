@@ -5,7 +5,7 @@ import urllib
 import logging
 import os
 
-CELEBRITY_DATA_URL = os.environ.get('CELEBRITY_DATA_URL','https://celebritydata.nukapi.com')
+CELEBRITY_DATA_URL = os.environ.get('CELEBRITY_DATA_URL','http://localhost:80/')
 
 IMAGE_BASE_URL = CELEBRITY_DATA_URL + "/images/"
 EMBEDDINGS_URL = CELEBRITY_DATA_URL + "/embeddings/embeddings.npy"
