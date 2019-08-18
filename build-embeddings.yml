@@ -1,0 +1,8 @@
+version: '3'
+services:
+
+  facescruncher:
+    build: facecruncher
+    volumes:
+      - ./celebritydata:/celebritydata
+    command: python /facecruncher/src/export_embeddings.py /facecruncher/src/pretrained_models /celebritydata/images

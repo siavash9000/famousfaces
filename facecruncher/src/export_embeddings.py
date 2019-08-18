@@ -122,8 +122,8 @@ def main(args):
             #   export emedings and labels
             label_list  = np.array(label_list)
 
-            np.save(args.embeddings_name, emb_array)
-            np.save('image_list.npy', image_list)
+            np.save('/celebritydata/embeddings/' + args.embeddings_name, emb_array)
+            np.save('/celebritydata/embeddings/image_list.npy', image_list)
 
 def load_and_align_data(image_paths, image_size, margin, gpu_memory_fraction):
 
@@ -171,7 +171,7 @@ def parse_arguments(argv):
     parser.add_argument('data_dir', type=str,
         help='Directory containing images. If images are not already aligned and cropped include --is_aligned False.')
     parser.add_argument('--is_aligned', type=str,
-        help='Is the data directory already aligned and cropped?', default=True)
+        help='Is the data directory already aligned and cropped?', default=False)
     parser.add_argument('--image_size', type=int,
         help='Image size (height, width) in pixels.', default=160)
     parser.add_argument('--margin', type=int,
