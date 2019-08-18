@@ -31,8 +31,8 @@ The application should now be available under http://localhost:3000
 
 
 ### Use your own images
-
 <a name="useyourownimages"/>
+
 You want to use your own images? Just add them to celebritydata/images, delete all files in celebritydata/embeddings.
 To create new embeddings run
 ```
@@ -45,6 +45,6 @@ docker-compose up
 
 
 ### Limitations:
-
 <a name="limitations"/>
+
 The tensorflow version is fixed to 1.2 . Feel free to update and create a pull request! Thanks in Advance for your help!
