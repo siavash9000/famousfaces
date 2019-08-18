@@ -1,5 +1,4 @@
 # famousfaces
-facenet + pretrained models + KDTree + WebCam = fun app
 
 This repo contains the source and data of https://famousfaces.nukapi.com, an open source variant of Microsofts CelebsLikeMe. 
 You take a picture of yourself and it presents you the most similar celebrities of a given set. 
