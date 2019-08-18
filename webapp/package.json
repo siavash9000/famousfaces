@@ -2,7 +2,6 @@
   "name": "famousfaces",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://famousfaces.nukapi.com/",
   "dependencies": {
     "react": "^16.3.0",
     "react-dom": "^16.3.0",

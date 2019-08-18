@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import Webcam from 'react-webcam';
-import ReactGA from 'react-ga';
 import { Button } from 'semantic-ui-react'
 import { Grid, Image, Loader, Dimmer} from 'semantic-ui-react'
 
 var DetectRTC = require('detectrtc');
 
-var faces_api_url="https://famousfaces.nukapi.com/facesapi/";
+var faces_api_url="http://localhost:81/facesapi/";
 if (process.env.REACT_APP_FACESAPIURL){
     faces_api_url=process.env.REACT_APP_FACESAPIURL
 }
@@ -79,8 +78,6 @@ class App extends Component {
     };
 
     render() {
-        ReactGA.initialize('UA-98816967-1');
-        ReactGA.pageview(window.location.pathname + window.location.search);
         var images = [];
         var key_idx = 0;
         if (this.state.nearest_celebrities) {
