@@ -17,15 +17,14 @@ You can easily add/remove faces and integrate the used react webapp into your ow
 #### Install docker (skip if already installed)
 https://docs.docker.com/engine/installation/
 
-#### Clone this repo and download pretrained models:
+#### Clone this repo:
 ```
 git clone https://github.com/siavash9000/famousfaces.git
-cd famousfaces
-./download_models.sh
 ```
 
 #### build and start containers
 ```
+cd famousfaces
 docker-compose build
 docker-compose up
 ```
@@ -37,13 +36,14 @@ The application should now be available under http://localhost:3000
 
 ### Use your own images
 
-You want to use your own images? Just add them to celebritydata/images, delete all files in celebritydata/embeddings.
+You want to use your own images? Just add as them as jpeg files to celebritydata/images, delete all files in celebritydata/embeddings.
 To create new embeddings run
 ```
 docker-compose -f build-embeddings.yml up
 ```
-To start the application with your own images then run 
+Then rebuild and start the application:
 ```
+docker-compose build
 docker-compose up
 ```
 
