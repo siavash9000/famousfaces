@@ -9,8 +9,10 @@ You can easily add/remove faces and integrate the used react webapp into your ow
 [Use your own images](#useyourownimages)  
 [Limitations](#limitations)
 
-### Getting started
 <a name="gettingstarted"/>
+
+### Getting started 
+
 
 #### Install docker (skip if already installed)
 https://docs.docker.com/engine/installation/
@@ -30,8 +32,9 @@ docker-compose up
 The application should now be available under http://localhost:3000
 
 
-### Use your own images
 <a name="useyourownimages"/>
+
+### Use your own images
 
 You want to use your own images? Just add them to celebritydata/images, delete all files in celebritydata/embeddings.
 To create new embeddings run
@@ -43,8 +46,7 @@ To start the application with your own images then run
 docker-compose up
 ```
 
-
-### Limitations:
 <a name="limitations"/>
 
+### Limitations:
 The tensorflow version is fixed to 1.2 . Feel free to update and create a pull request! Thanks in Advance for your help!
