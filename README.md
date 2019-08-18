@@ -27,7 +27,7 @@ docker-compose build
 docker-compose up
 ```
 
-**The application should now be available under http://localhost:3000**
+The application should now be available under http://localhost:3000
 
 ### Limitations:
 
