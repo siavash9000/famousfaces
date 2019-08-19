@@ -7,6 +7,7 @@ You can easily add/remove faces and integrate the used react webapp into your ow
 ##### Table of Contents  
 [Getting started](#gettingstarted)  
 [Use your own images](#useyourownimages)  
+[Architecture](#architecture)
 [Limitations](#limitations)
 
 <a name="gettingstarted"/>
@@ -46,6 +47,12 @@ Then rebuild and start the application:
 docker-compose build
 docker-compose up
 ```
+<a name="architecture"/>
+
+### How does it work?
+
+Famousfaces relies in its core on [facenet](https://github.com/davidsandberg/facenet). Facenet is a neural network model which computes an embedding for a given face. An embedding of a face is a vector with a very usefull characteristic: The more similar the faces are to each other, the closer the vectors are to each other in terms of cosine distance. Famousfaces uses this property of facenet embeddings to find the most similar faces from a given set of images.
+
 
 <a name="limitations"/>
 
