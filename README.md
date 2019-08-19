@@ -51,7 +51,7 @@ docker-compose up
 
 ### How does it work?
 
-Famousfaces relies in its core on [facenet](https://github.com/davidsandberg/facenet). Facenet is a neural network model which computes an embedding for a given face. An embedding of a face is a vector with a very usefull characteristic: The more similar the faces are to each other, the closer the vectors are to each other in terms of cosine distance. Famousfaces uses this property of facenet embeddings to find the most similar faces from a given set of images.
+The core of Famousfaces relies on [facenet](https://github.com/davidsandberg/facenet). Facenet is a neural network model which computes an embedding for a given face. An embedding of a face is a vector with a very usefull characteristic: The more similar the faces are to each other, the closer the vectors are to each other in terms of cosine distance. Famousfaces uses this property of facenet embeddings to find the most similar faces from a given set of images.
 
 
 <a name="limitations"/>
