@@ -7,7 +7,7 @@ You can easily add/remove faces and integrate the used react webapp into your ow
 ##### Table of Contents  
 [Getting started](#gettingstarted)  
 [Use your own images](#useyourownimages)  
-[Architecture](#architecture)  
+[How does it work?](#architecture)  
 [Limitations](#limitations)  
 
 <a name="gettingstarted"/>
