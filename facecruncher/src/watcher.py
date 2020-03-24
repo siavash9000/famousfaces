@@ -4,6 +4,9 @@ from embedd_face import FaceEmbedder
 from celebrity_nn import CelebrityTree
 import time
 import logging
+import pika
+import base64
+
 
 submissions_folder = '/submissions/'
 results_folder = '/results/'
@@ -33,13 +36,30 @@ def process_submissions(faceEmbedder, celebrityTree):
         os.remove(file_path)
 
 
+class Cruncher(object):
+    def __init__(self, faceEmbedder, celebTree):
+        self.faceEmbedder = faceEmbedder
+        self.celebTree = celebTree
+
+    def process_message(self, ch, method, properties, body):
+        image = json.loads(body)['base64_image']
+        image = base64.b64decode(image)
+        embedding = faceEmbedder.embedd_face(image)
+        result = self.celebTree.face_analysis(embedding)
+        logging.warning(result)
+        ch.basic_ack(delivery_tag=method.delivery_tag)
+
+
 if __name__ == "__main__":
     logging.warning("starting watcher process")
     faceEmbedder = FaceEmbedder()
     celebTree = CelebrityTree()
-    while True:
-        try:
-            process_submissions(faceEmbedder, celebTree)
-            time.sleep(1)
-        except Exception as e:
-            logging.exception(e)
+    cruncher = Cruncher(faceEmbedder=faceEmbedder, celebTree=celebTree)
+    creds = pika.PlainCredentials("user", "bitnami")
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq', credentials=creds))
+    channel = connection.channel()
+    channel.queue_declare(queue='facecrunch_queue', durable=True)
+    channel.basic_qos(prefetch_count=1)
+    channel.basic_consume(queue='facecrunch_queue', on_message_callback=cruncher.process_message)
+
+    channel.start_consuming()

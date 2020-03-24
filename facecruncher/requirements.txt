@@ -7,3 +7,4 @@ matplotlib
 Pillow
 requests
 psutil
+pika==1.1.0

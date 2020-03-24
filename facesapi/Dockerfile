@@ -1,5 +1,5 @@
 FROM continuumio/miniconda3
-RUN pip install flask flask-cors gunicorn
+RUN pip install flask flask-cors gunicorn pika==1.1.0
 WORKDIR /facesapi
 ADD . /facesapi
 EXPOSE 8081

@@ -4,6 +4,7 @@ from __future__ import print_function
 
 import time
 from scipy import misc
+import io
 import tensorflow as tf
 import numpy as np
 import sys
@@ -54,8 +55,8 @@ class FaceEmbedder(object):
                 logging.warning("complete runtime {}".format(time.time() - start_time))
                 return embed[0]
 
-    def load_and_align_data(self, image_path, image_size, margin):
-        img = misc.imread(os.path.expanduser(image_path))
+    def load_and_align_data(self, image, image_size, margin):
+        img = misc.imread(io.BytesIO(image))
         img_size = np.asarray(img.shape)[0:2]
         try:
             bounding_boxes, _ = align.detect_face.detect_face(img, self.minsize, self.pnet, self.rnet,
