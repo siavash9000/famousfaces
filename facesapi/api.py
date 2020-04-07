@@ -1,8 +1,7 @@
 import uuid
 from flask import request, url_for, Flask, jsonify
 from flask_cors import CORS
-from os import path
-import base64
+import os
 import json
 import pika
 import logging
@@ -10,10 +9,13 @@ import psycopg2
 
 
 def create_db_structure():
-    connection = psycopg2.connect(dbname='postgres',
-                                  user='postgres',
+    db_name = os.environ.get('DB_NAME', 'postgres')
+    db_user = os.environ.get('DB_USER', 'postgres')
+    db_password = os.environ.get('DB_PASSWORD', 'postgres')
+    connection = psycopg2.connect(dbname=db_name,
+                                  user=db_user,
                                   host='postgresql',
-                                  password='postgres',
+                                  password=db_password,
                                   port=5432)
     connection.autocommit = True
     cursor = connection.cursor()

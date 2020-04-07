@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS face_analysis AUTHORIZATION postgres;
+CREATE SCHEMA IF NOT EXISTS face_analysis;
 SET SEARCH_PATH TO face_analysis;
 CREATE TABLE IF NOT EXISTS face_analysis.results (
 	uuid uuid NOT NULL,
