@@ -13,6 +13,7 @@ def create_db_structure():
     db_user = os.environ.get('DB_USER', 'postgres')
     db_password = os.environ.get('DB_PASSWORD', 'postgres')
     logging.info("Executing database init")
+    logging.warning("Executing database init")
     connection = psycopg2.connect(dbname=db_name,
                                   user=db_user,
                                   host='postgresql',
@@ -25,7 +26,7 @@ def create_db_structure():
     cursor.close()
     connection.close()
 
-
+logging.warning("starting facesapi")
 app = Flask(__name__)
 CORS(app)
 create_db_structure()
