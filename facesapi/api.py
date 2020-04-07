@@ -52,7 +52,7 @@ def queue_image(image):
     return id_
 
 
-@app.route("/facesapi/face", methods=['GET', 'POST'])
+@app.route("/face", methods=['GET', 'POST'])
 def face():
     if request.method == 'POST':
         image_id = queue_image(request.json['image'])
