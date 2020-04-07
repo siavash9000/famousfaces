@@ -6,26 +6,36 @@ import base64
 import json
 import pika
 import logging
+import psycopg2
+
+
+def create_db_structure():
+    connection = psycopg2.connect(dbname='postgres',
+                                  user='postgres',
+                                  host='postgresql',
+                                  password='postgres',
+                                  port=5432)
+    connection.autocommit = True
+    cursor = connection.cursor()
+    sql = open("/facesapi/createDatabaseStructure.sql", "r").read()
+    cursor.execute(sql)
+    cursor.close()
+    connection.close()
 
 
 app = Flask(__name__)
 CORS(app)
-
-def persist_image(image):
-    image_id = uuid.uuid4()
-    filename = str(image_id) + '.jpeg'
-    with open(path.join("/submissions", filename), "wb") as f:
-        f.write(base64.b64decode(image))
-    return image_id
+create_db_structure()
 
 
 def queue_image(image):
-    creds = pika.PlainCredentials("user", "bitnami")
+    creds = pika.PlainCredentials("ribby", "ribby")
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq', credentials=creds))
     channel = connection.channel()
     channel.queue_declare(queue='facecrunch_queue', durable=True)
 
-    message = json.dumps({'image_id': str(uuid.uuid4()), 'base64_image': image})
+    id_= str(uuid.uuid4())
+    message = json.dumps({'image_id': id_, 'base64_image': image})
     channel.basic_publish(
         exchange='',
         routing_key='facecrunch_queue',
@@ -35,6 +45,7 @@ def queue_image(image):
         ))
     logging.debug("Sent message facecrunch_queue to {}".format(message))
     connection.close()
+    return id_
 
 
 @app.route("/facesapi/face", methods=['GET', 'POST'])
@@ -44,13 +55,22 @@ def face():
         return jsonify({'face_id': str(image_id)}), 201
     else:
         face_id = request.args.get('face_id')
-        submission_filename = path.join("/submissions", str(face_id) + '.jpeg')
-        if path.isfile(submission_filename):
-            return jsonify({}), 202
-        result_filename = path.join("/results", str(face_id) + '.json')
-        if path.isfile(result_filename):
-            with open(result_filename, "r") as f:
-                result = json.loads(f.read())
-            return jsonify(result), 200
-        return jsonify({'message': 'Could not find {}'.format(result_filename)}), 404
+        connection = psycopg2.connect(dbname='postgres',
+                                      user='postgres',
+                                      host='postgresql',
+                                      password='postgres',
+                                      port=5432)
+        connection.autocommit = True
+        cursor = connection.cursor()
+        sql = "Select nearest_faces FROM face_analysis.results WHERE uuid=%s"
+        cursor.execute(sql, (face_id,))
+        nearest_faces = None
+        if cursor.rowcount:
+            nearest_faces = cursor.fetchone()[0]
+        cursor.close()
+        connection.close()
+        if nearest_faces:
+            return jsonify(nearest_faces), 200
+        return jsonify({'message': 'Could not find {}'.format(face_id)}), 404
+
 

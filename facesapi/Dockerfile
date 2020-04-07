@@ -1,4 +1,5 @@
 FROM continuumio/miniconda3
+RUN conda install -y psycopg2==2.8.4
 RUN pip install flask flask-cors gunicorn pika==1.1.0
 WORKDIR /facesapi
 ADD . /facesapi

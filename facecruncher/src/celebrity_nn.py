@@ -5,11 +5,12 @@ import urllib
 import logging
 import os
 
-CELEBRITY_DATA_URL = os.environ.get('CELEBRITY_DATA_URL','http://localhost:80/')
+CELEBRITY_DATA_URL_LOCAL = os.environ.get('CELEBRITY_DATA_URL_LOCAL','http://localhost:80/')
+CELEBRITY_DATA_URL_REMOTE = os.environ.get('CELEBRITY_DATA_URL_REMOTE','http://localhost:80/')
 
-IMAGE_BASE_URL = CELEBRITY_DATA_URL + "/images/"
-EMBEDDINGS_URL = CELEBRITY_DATA_URL + "/embeddings/embeddings.npy"
-IMAGELIST_URL = CELEBRITY_DATA_URL + "/embeddings/image_list.npy"
+IMAGE_BASE_URL = CELEBRITY_DATA_URL_REMOTE + "/images/"
+EMBEDDINGS_URL = CELEBRITY_DATA_URL_LOCAL + "/embeddings/embeddings.npy"
+IMAGELIST_URL = CELEBRITY_DATA_URL_LOCAL + "/embeddings/image_list.npy"
 
 
 class CelebrityTree(object):

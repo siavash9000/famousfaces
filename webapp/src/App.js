@@ -50,8 +50,8 @@ class App extends Component {
         if (response['status'] === 200) {
             response.json().then(data => this.setState({nearest_celebrities: data, waiting: false}))
         }
-        else if (response['status'] === 202) {
-            setTimeout(this.fetchCelebs, 1000);
+        else if (response['status'] === 404) {
+            setTimeout(this.fetchCelebs, 1500);
         }
     }
 

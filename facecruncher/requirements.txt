@@ -8,3 +8,4 @@ Pillow
 requests
 psutil
 pika==1.1.0
+psycopg2==2.8.4
