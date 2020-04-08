@@ -48,7 +48,7 @@ def queue_image(image):
         properties=pika.BasicProperties(
             delivery_mode=2,  # make message persistent
         ))
-    logging.warning("Sent message with id {} ".format(message['image_id']))
+    logging.warning("Sent message {} ".format(message[0:20]))
     connection.close()
     return id_
 
