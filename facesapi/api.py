@@ -48,7 +48,7 @@ def queue_image(image):
         properties=pika.BasicProperties(
             delivery_mode=2,  # make message persistent
         ))
-    logging.warning("Sent message facecrunch_queue to {}".format(message))
+    logging.warning("Sent message with id {} ".format(message['image_id']))
     connection.close()
     return id_
 
@@ -57,6 +57,7 @@ def queue_image(image):
 def face():
     if request.method == 'POST':
         image_id = queue_image(request.json['image'])
+        logging.warning("Queue id {}".format(image_id))
         return jsonify({'face_id': str(image_id)}), 201
     else:
         face_id = request.args.get('face_id')
