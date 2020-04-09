@@ -28,7 +28,7 @@ def create_db_structure():
 
 logging.warning("starting facesapi")
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://famousfaces.nukapi.com"]}})
+CORS(app)
 create_db_structure()
 
 
