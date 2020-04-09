@@ -46,7 +46,7 @@ def queue_image(image):
         routing_key='facecrunch_queue',
         body=message,
         properties=pika.BasicProperties(
-            delivery_mode=1,  # make message persistent
+            delivery_mode=2,  # make message persistent
         ))
     logging.warning("Sent message {} ".format(message[0:20]))
     connection.close()
