@@ -50,6 +50,7 @@ def queue_image(image):
         ))
     logging.warning("Sent message {} ".format(message[0:20]))
     connection.close()
+    logging.warning("Closed Connection")
     return id_
 
 
