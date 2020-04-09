@@ -28,13 +28,13 @@ def create_db_structure():
 
 logging.warning("starting facesapi")
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://famousfaces.nukapi.com"]}})
 create_db_structure()
 
 
 def queue_image(image):
     logging.debug("trying to connect to rabbitmq")
-    creds = pika.PlainCredentials("ff", "ff")
+    creds = pika.PlainCredentials("ribby", "ribby")
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq', credentials=creds))
     channel = connection.channel()
     channel.queue_declare(queue='facecrunch_queue', durable=True)

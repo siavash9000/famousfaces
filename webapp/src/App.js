@@ -6,7 +6,7 @@ import { Grid, Image, Loader, Dimmer} from 'semantic-ui-react'
 
 var DetectRTC = require('detectrtc');
 
-var faces_api_url="http://localhost:81/facesapi/";
+var faces_api_url="http://localhost:81/";
 if (process.env.REACT_APP_FACESAPIURL){
     faces_api_url=process.env.REACT_APP_FACESAPIURL
 }
