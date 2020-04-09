@@ -66,7 +66,7 @@ if __name__ == "__main__":
     faceEmbedder = FaceEmbedder()
     celebTree = CelebrityTree()
     cruncher = Cruncher(faceEmbedder=faceEmbedder, celebTree=celebTree)
-    creds = pika.PlainCredentials("ribby", "ribby")
+    creds = pika.PlainCredentials("rabbit", "rabbit")
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq', credentials=creds))
     channel = connection.channel()
     channel.queue_declare(queue='facecrunch_queue', durable=True)

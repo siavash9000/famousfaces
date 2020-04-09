@@ -34,7 +34,7 @@ create_db_structure()
 
 def queue_image(image):
     logging.debug("trying to connect to rabbitmq")
-    creds = pika.PlainCredentials("ribby", "ribby")
+    creds = pika.PlainCredentials("rabbit", "rabbit")
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq', credentials=creds))
     channel = connection.channel()
     channel.queue_declare(queue='facecrunch_queue', durable=True)
