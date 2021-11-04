@@ -1,6 +1,6 @@
 tensorflow==1.2
 scipy
-opencv-python==3.1.0.5
+opencv-python==4.2.0.32
 h5py
 matplotlib
 Pillow
