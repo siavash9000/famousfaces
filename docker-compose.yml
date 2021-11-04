@@ -21,8 +21,8 @@ services:
     command: sh -c "sleep 15s && python /facecruncher/src/watcher.py"
 
   rabbitmq:
+    build: rabbitmq
     hostname: "rabbitmq"
-    image: 'bitnami/rabbitmq:3.8'
     volumes:
       - rabbitmq_data:/bitnami
 
@@ -39,6 +39,11 @@ services:
     build: celebritydata
     ports:
       - 8081:8081
+
+  webapp:
+    build: webapp
+    ports:
+      - 3000:8081
 
 volumes:
   faces-data:
