@@ -1,4 +1,4 @@
-tensorflow==1.2
+tensorflow==2.5.1
 scipy
 opencv-python==3.1.0.5
 h5py
