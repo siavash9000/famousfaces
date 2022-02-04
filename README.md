@@ -18,6 +18,9 @@ You can easily add/remove faces and integrate the used react webapp into your ow
 #### Install docker (skip if already installed)
 https://docs.docker.com/engine/installation/
 
+#### Install docker-compose (skip if already installed)
+https://docs.docker.com/compose/install/
+
 #### Clone this repo:
 ```
 git clone https://github.com/siavash9000/famousfaces.git
