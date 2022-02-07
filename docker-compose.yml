@@ -7,7 +7,7 @@ services:
       - 81:8081
     volumes:
       - ./facesapi:/facesapi
-    command: sh -c "sleep 10; gunicorn --workers=4 --bind=0.0.0.0:8081 api:app"
+    command: sh -c "sleep 15; gunicorn --workers=4 --bind=0.0.0.0:8081 api:app"
     depends_on:
       - postgresql
 
