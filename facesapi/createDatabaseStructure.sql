@@ -1,3 +1,4 @@
+LOCK TABLE pg_catalog.pg_namespace;
 CREATE SCHEMA IF NOT EXISTS face_analysis AUTHORIZATION postgres;
 SET SEARCH_PATH TO face_analysis;
 CREATE TABLE IF NOT EXISTS face_analysis.results (
@@ -5,3 +6,4 @@ CREATE TABLE IF NOT EXISTS face_analysis.results (
 	nearest_faces json NOT NULL,
 	CONSTRAINT results_pk PRIMARY KEY (uuid)
 );
+LOCK TABLE pg_catalog.pg_namespace
