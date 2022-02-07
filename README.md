@@ -29,6 +29,7 @@ git clone https://github.com/siavash9000/famousfaces.git
 #### build and start containers
 ```
 cd famousfaces
+docker-compose pull
 docker-compose build
 docker-compose up
 ```
