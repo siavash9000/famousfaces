@@ -33,8 +33,8 @@ docker-compose pull
 docker-compose build
 docker-compose up
 ```
-
-The application should now be available under http://localhost:3000
+The startup cann took several minutes, please be patient. The Tensorflow Service needs some time for loading its model.
+The application should then be available under http://localhost:3000
 
 
 <a name="useyourownimages"/>
